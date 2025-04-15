@@ -1,4 +1,4 @@
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 module.exports.config = {
   name: "noti",
@@ -45,16 +45,16 @@ module.exports.run = async function({ api, event, args, config }) {
       return api.sendMessage("No group threads found to send the notification.", threadID, messageID);
     }
 
-    const notificationTime = moment().format("hh:mm A");
-    const notificationDate = moment().format("MMMM DD, YYYY");
+    const notificationTime = moment().tz("Asia/Manila").format("hh:mm A");
+    const notificationDate = moment().tz("Asia/Manila").format("MMMM DD, YYYY");
 
     const notificationMessage = `
-🌟══════✨ NOTIFICATION ✨══════🌟
+╭╴╴𝐀𝐍𝐍𝐎𝐔𝐍𝐂𝐄𝐌𝐄𝐍𝐓╶╶╮
 📢 Message from Admin: ${adminName}
 💬 ${message}
 🕒 Time: ${notificationTime}
 📅 Date: ${notificationDate}
-══════✨══════✨══════✨══════`;
+╰╶╶╶╶╶╶╶╶╶╶╶╶╶╶╶╶╯`;
 
     for (const group of groupThreads) {
       api.sendMessage(notificationMessage, group.threadID, (err) => {
