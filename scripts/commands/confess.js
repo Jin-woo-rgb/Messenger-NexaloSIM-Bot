@@ -1,20 +1,12 @@
-const chalk = require('chalk');
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
-const crypto = require('crypto');
-
 module.exports.config = {
 name: "confess",
-aliases: [], 
 version: "1.0.0",
-author: "Deku",
-countDown: 5,
-adminOnly: false, 
+hasPermssion: 0,
+credits: "Deku",
 description: "Confess to someone",
-category: "fun",
-guide: "[fb url or uid | message]",
-usePrefix: true, 
+commandCategory: "...",
+usages: "[fb url or uid | message]",
+cooldowns: 0
 };
 
 module['exports']['run'] = async function({ api, event, args }) {
